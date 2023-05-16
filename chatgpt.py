@@ -1,5 +1,4 @@
 from flask import Flask, request, session
-from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 import openai
  
@@ -9,7 +8,7 @@ app = Flask(__name__)
 
 # OPEN-AI CHAT GPT
 
-openai.api_key = "YOUR OPENAI API KEY HERE"
+openai.api_key = "xxxxxxx"
 completion = openai.Completion()
 
 start_chat_log = '''Human: Hello, who are you?
@@ -37,8 +36,8 @@ def append_interaction_to_chat_log(question, answer, chat_log=None):
 
 # TWILIO
 
-account_sid = 'YOUR TWILIO ACCOUNT SID HERE'                                            
-auth_token = 'YOUR TWILIO AUTH TOKEN HERE'                                                   
+account_sid = 'xxxxxxx'                                            
+auth_token = 'xxxxxx'                                                   
 client = Client(account_sid, auth_token)
 
 def sendMessage(body_mess, phone_number):
@@ -65,10 +64,8 @@ def bot():
         sendMessage("Message Cannot Be Empty!")
         print("Message Is Empty")
 
-
-    r = MessagingResponse()
-    r.message("")        
-    return str(r)
+       
+    return "Done"
     
 
 

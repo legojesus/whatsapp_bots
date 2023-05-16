@@ -1,5 +1,4 @@
 from flask import Flask, request
-from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 import requests
 import os  
@@ -8,8 +7,8 @@ from google.cloud import speech
 
 # TWILIO setup and function (https://console.twilio.com/)
 
-account_sid = 'YOUR TWILIO ACCOUNT SID HERE'                  
-auth_token = 'YOUR TWILIO AUTH_TOKEN HERE'                         
+account_sid = 'xxxxxx'                  
+auth_token = 'xxxxxx'                         
 client = Client(account_sid, auth_token)
 
 def sendMessage(body_mess, phone_number):
@@ -26,11 +25,11 @@ def sendMessage(body_mess, phone_number):
 
 def speech_to_text(config: speech.RecognitionConfig, audio: speech.RecognitionAudio) -> speech.RecognizeResponse:
             
-    client = speech.SpeechClient().from_service_account_json(filename="creds.json")
+            client = speech.SpeechClient().from_service_account_json(filename="creds.json")
 
-    # Synchronous speech recognition request
-    response = client.recognize(config=config, audio=audio)
-    return response
+            # Synchronous speech recognition request
+            response = client.recognize(config=config, audio=audio)
+            return response
 
 
 def print_response(response: speech.RecognizeResponse):
@@ -54,6 +53,9 @@ config = speech.RecognitionConfig(
     alternative_language_codes=["he"],
     enable_automatic_punctuation = True
 )
+
+
+# FLASK app setup and init
 
 app = Flask(__name__)
 
@@ -85,10 +87,8 @@ def bot():
 
         # Send a Whatsapp message back with the text of the voice message
         sendMessage(text, phone_number)
-
-        r = MessagingResponse()
-        r.message("")        
-        return str(r)
+     
+        return "Done"
 
 
 if __name__ == '__main__':
