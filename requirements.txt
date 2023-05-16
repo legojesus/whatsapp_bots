@@ -1,0 +1,5 @@
+requests==2.22.0
+twilio
+openai
+flask
+google-cloud-speech
