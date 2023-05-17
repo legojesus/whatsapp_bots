@@ -1,7 +1,7 @@
 # Whatsapp bots in Python with Twilio
 
 This repo is a WIP and currently contains the following Whatsapp bots: 
-- voice_to_text.py - A whatsapp bot that accepts voice messages and sends the user back a text message with the contents of the voice message.
+- voice2text.py - A whatsapp bot that accepts voice messages and sends the user back a text message with the contents of the voice message.
 - chatgpt.py - A ChatGPT Whatsapp bot that allows you to text directly to ChatGPT and get replies in Whatsapp. 
 
 Integration with Twilio (https://console.twilio.com/) is required in order for this setup to work. Tested with Twilio's trial account using a Whatsapp sandbox, and a Google Cloud compute engine virtual machine that runs the python app. 
